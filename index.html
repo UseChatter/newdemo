@@ -318,7 +318,8 @@
                     }
                 }
             
-                document.getElementById("send").onclick = function(){
+                document.getElementById("send").onclick = function();
+                            document.getElementById("send").onclick="note()"
 
                     if(text.value.length > 0 && login == true){
 
