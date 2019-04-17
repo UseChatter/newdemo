@@ -82,6 +82,8 @@
                 alert("You have not inputed a chat room code. You will not enter any chatroom");
                   return;
               }
+                              document.getElementById("send").onclick="note()";
+          }
 
             localStorage.setItem("chatter_private_room_number", rt);
 
@@ -319,7 +321,6 @@
                 }
             
                 document.getElementById("send").onclick = function();
-                            document.getElementById("send").onclick="note()"
 
                     if(text.value.length > 0 && login == true){
 
