@@ -19,7 +19,7 @@
         <div id = "wrap"></div>
         <div id = "chat"></div>
         <div id = "panel">
-            <input id = "text" placeholder = "You must be logged in to post">
+            <input id = "text" placeholder = "Please Login To Chat">
             <div id = "send"></div>
             
         </div>
@@ -90,6 +90,17 @@
             messagingSenderId: "272359858522"
           };
           firebase.initializeApp(config);
+            const messaging = firebase.messaging();
+            messaging.requestPermission()
+            .then(function() {
+                console.log('Have permission');
+            })
+            .catch(function(err) {
+                console.log(Error Occured);
+            })
+            
+            
+            
           var provider = new firebase.auth.GoogleAuthProvider();
           var tc = document.getElementById("tc");
           tc.onclick = function(){
@@ -248,7 +259,7 @@
                           
                         var dataTarget = document.createElement("span");
                         var addPadding = document.createElement("span");
-                        addPadding.innerHTML = tstamp[0] + "<br><br><br><br><h6 style = 'color:#36935b;'>  Posted At " + tstamp[1] + "</h6>";
+                        addPadding.innerHTML = tstamp[0] + "<br><br><br><h6 style = 'color:#36935b;'>  Posted At " + tstamp[1] + "</h6>";
                         addPadding.className = "add_padding";
                         addPadding.style.overflow = "auto";
                         dataTarget.appendChild(addPadding);
@@ -301,9 +312,9 @@
 <style>
 #notification112 {
   visibility: hidden;
-  min-width: 250px;
-  margin-left: -125px;
-  background-color: #333;
+  min-width: 450px;
+  margin-left: -250px;
+  background-color: green;
   color: #fff;
   text-align: center;
   border-radius: 2px;
@@ -311,7 +322,7 @@
   position: fixed;
   z-index: 1;
   left: 50%;
-  bottom: 30px;
+  bottom: 65px;
   font-size: 17px;
 }
 #notification112.show {
@@ -321,18 +332,18 @@
 }
 @-webkit-keyframes fadein {
   from {bottom: 0; opacity: 0;} 
-  to {bottom: 30px; opacity: 1;}
+  to {bottom: 65px; opacity: 0.7;}
 }
 @keyframes fadein {
   from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
+  to {bottom: 65px; opacity: 0.7;}
 }
 @-webkit-keyframes fadeout {
-  from {bottom: 30px; opacity: 1;} 
+  from {bottom: 65px; opacity: 0.7;} 
   to {bottom: 0; opacity: 0;}
 }
 @keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
+  from {bottom: 65px; opacity: 0.7;}
   to {bottom: 0; opacity: 0;}
 }
 </style>
@@ -344,6 +355,6 @@ function note() {
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 </script>
-
-    </body>
-    </html>
+        <body onload="note()">
+        <div id="notification112"><Message from: COLE MCCARSON>Hello, welcome to Chatter!</div>
+        </body>
